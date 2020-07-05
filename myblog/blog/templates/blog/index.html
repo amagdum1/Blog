@@ -1,0 +1,29 @@
+
+
+
+
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+<div class="mycontent">
+{% if user.is_authenticated %}
+    <br><br>
+    <h4><a href="{% url 'post_list' %}">Click here to see all posts</a></h4>
+
+ {% else %}
+        <br><br><br>
+        <h2 id="welcome">Welcome to Python Blog.</h2>
+     <img src="{% static 'images/python.png' %}" alt="img not found" align="right"><br>
+        <h3 class="index">Join us to know cool stuff about Python language.</h3><br>
+        <h3 class="index">Sign up to share your thoughts!!</h3><br>
+        <img src="{% static 'images/django.png' %}" alt="img not found" align="right"><br>
+
+
+        <h3 class="index">Already a member?? Login to continue</h3><br><br>
+        <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Login</a>
+        <a class="btn btn-success btn-lg" href="{% url 'signup' %}" role="button">SignUp</a>
+
+  {% endif %}
+</div>
+{% endblock %}
+

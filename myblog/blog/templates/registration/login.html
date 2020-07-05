@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+{% load bootstrap4 %}
+
+
+{% block content %}
+<div class="container">
+  <br><br><br>
+  <form method="POST" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+
+      <br><button type="submit" class="btn btn-primary btn-lg">Login</button>
+
+
+    {% endbuttons %}
+  </form>
+</div>
+{% endblock %}
+
+

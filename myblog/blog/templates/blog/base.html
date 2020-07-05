@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <title>Blog Project</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- Alternative to Bootstrap 3 Glyphicons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Optional theme -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
+
+    {# font family #}
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@900&display=swap" rel="stylesheet">
+
+    {# Custom CSS#}
+    <link rel="stylesheet" href="{% static 'blog.css' %}">
+
+
+  </head>
+
+  <body class="mycontent">
+
+    <nav class="navbar navbar-expand-lg bg-light techfont">
+      <div class="container">
+        <div class="navbar-nav align-items-center">
+          <h1>Python Blog</h1>
+         <h5> <a class="nav-item nav-link" href="{% url 'about' %}">About us</a></h5>
+
+
+        </div>
+        <div class="navbar-nav align-items-center ml-auto">
+          {% if user.is_authenticated %}
+            <h4><a class="nav-item nav-link" href="{% url 'post_new' %}">New Post</a></h4>
+            <h4><a class="nav-item nav-link" href="{% url 'post_draft_list' %}">Drafts</a></h4>
+            <h4><a class="nav-item nav-link" href="{% url 'post_list' %}">Home</a></h4>
+            <h4><a class="nav-item nav-link" href="{% url 'logout' %}">Log out</a></h4>
+            <h5><a >Welcome: {{ user.username }}</a></h5>
+
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+
+
+    {# The actual blog posts#}
+    <div class="content container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="blog_posts">
+                {% block content %}
+                {% endblock %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <script type="text/javascript" src="{% static 'blog.js' %}"></script>
+  </body>
+</html>

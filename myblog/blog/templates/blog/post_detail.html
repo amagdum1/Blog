@@ -1,0 +1,56 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+        <br><br>
+        <h1 class='posttitle loader' id="title">{{ post.title }}</h1><br>
+
+        {% if post.published_date %}
+            <div class="date postdate">
+                <h4 id="author">Author:{{ post.author }}</h4>
+                {{ post.published_date }}
+
+
+            </div><br>
+
+
+        {% endif %}
+
+      <p class='postcontent' >{{ post.text|safe|linebreaksbr }}</p><br>
+
+   {% if user.is_authenticated %}
+        {% if user.id == post.author.id %}
+          <a class="btn btn-warning" href="{% url 'post_edit' pk=post.pk %}"><span class="fa fa-pencil"></span></a>
+          <a class="btn btn-danger" href="{% url 'post_remove' pk=post.pk %}"><span class="fa fa-remove"></span></a>
+        {% endif %}
+
+    {% if not post.published_date%}
+
+    <button onclick="postPublish()" class="btn btn-outline-success" ><a href="{% url 'post_publish' pk=post.pk %}">Publish</a></button>
+    {% endif %}
+{% endif %}
+
+  <hr>
+{% if post.published_date %}
+ <a class="btn btn-info float-right" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
+{% endif %}
+
+  <div class="container">
+
+
+  {% for comment in post.comments.all %}
+  <br>
+      {% if user.is_authenticated %}
+
+              {{ comment.created_date }}
+
+          <p>{{ comment.text|safe|linebreaks }}</p>
+          <p>Posted by: <strong>{{ comment.author }}</strong></p>
+
+      {% endif %}
+  {% empty %}
+      <p>No comments posted.</p>
+  {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <br><h2 id="comment">Add new comment</h2><br>
+    <form method="POST" class="post-form">
+    {% csrf_token %}
+
+	 <div class="form-group row">
+        <h5><label class="col-sm-2 col-form-label paddingAuthor">Author</label></h5>
+    <div class="col-sm-10">
+    	{{ form.author }}
+
+    </div>
+	 </div>
+
+	 <div class="form-group row">
+    <h5><label class="col-sm-2 col-form-label padding">Text</label></h5>
+
+    <div class="col-sm-10 postcontent">
+    	{{ form.text }}
+    </div>
+	 </div>
+
+    <button type="submit" class="save btn btn-success btn-lg">Save</button>
+    </form>
+
+{% endblock %}
+

@@ -1,0 +1,58 @@
+
+
+.mycontent{
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.techfont{
+    font-family: 'Heebo', sans-serif;
+    color: #0D1B85;
+}
+
+#welcome{
+    color: #850D19;
+}
+
+.index{
+    color: #DE702C;
+}
+
+#title{
+    color: #850D19;
+}
+
+#create{
+    color: #85150D;
+}
+
+.padding{
+    margin-right: 85px;
+
+}
+
+.paddingAuthor{
+    margin-right: 60px;
+}
+
+#postTitle{
+    color: #850D19;
+}
+
+#comment{
+    color: #850D19;
+}
+
+#thanks{
+    color: #850D19;
+}
+
+.about{
+    color: #DE702C;
+}
+
+.mycontent{
+    background-image: url('images/gray.jpg');
+    background-repeat: no-repeat;
+     background-attachment: fixed;
+    background-size: cover;
+}

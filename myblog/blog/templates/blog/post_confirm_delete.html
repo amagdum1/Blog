@@ -1,0 +1,10 @@
+{% extends "blog/base.html" %}
+{% block content %}
+  <form action="" method="post">{% csrf_token %}
+    <br><br> <h4>Are you sure you want to delete "{{ object }}"?</h4><br>
+
+    <button onclick="delConfirm()" class='btn btn-danger' type="submit">Confirm</button>
+     <a class='btn btn-warning' type="submit" href="{% url 'post_list' %}">Cancel</a>
+
+  </form>
+{% endblock %}
